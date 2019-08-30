@@ -3,11 +3,14 @@ import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 import { Badge } from 'reactstrap'
 
-const InfoSerie = ({match}) => {
-    const [form, setForm] = useState({})
+const InfoSerie = ({ match }) => {
+    const [form, setForm] = useState({
+        name: ''
+    })
     const [success, setSuccess] = useState(false)
-    const [mode, setMode] = useState('EDIT')
+    const [mode, setMode] = useState('INFO')
     const [genres, setGenres] = useState([])
+    const [genreId, setGenreId] = useState('')
 
     const [data, setData] = useState({})
     useEffect(() => {
@@ -17,15 +20,21 @@ const InfoSerie = ({match}) => {
             setData(res.data)
             setForm(res.data)
         })
-    })
+    }, [match.params.id])
 
     useEffect(() => {
         axios
         .get('/api/genres')
         .then(res => {
             setGenres(res.data.data)
+            const genres = res.data.data
+            const encontrado = genres.find(value => data.genre === value.name)
+            //console.log('Encontrado', encontrado)
+            if(encontrado) {
+                setGenreId(encontrado.id)
+            }
         })
-    })
+    }, [data])
 
     // custom header
     const masterHeader = {
@@ -45,14 +54,26 @@ const InfoSerie = ({match}) => {
         })
     }
 
+    const onChangeGenre = evt => {
+        setGenreId(evt.target.value)
+    }
+
+    const seleciona = value => () => {
+        setForm({
+            ...form,
+            status: value
+        })
+    }
+
 
     const save = () => {
+        //console.log(form, genreId)
         axios
-        .post('/api/series', {
-            form
+        .put('/api/series/' + match.params.id, {
+        ...form,
+        genre_id: genreId
         })
         .then(res => {
-            //console.log(res)
             setSuccess(true)
         })
     }
@@ -75,8 +96,8 @@ const InfoSerie = ({match}) => {
                             <div className='col-8'>
                                 <h1 className='font-weight-light text-white'>{data.name}</h1>
                                 <div className='lead text-white'>
-                                    <Badge color='success'>Assistido</Badge>
-                                    <Badge color='warning'>Para assitir</Badge>
+                                    { data.status === 'ASSISTIDO' && <Badge color='success'>Assistido</Badge>}
+                                    { data.status === 'PARA_ASSISTIR' && <Badge color='warning'>Para assitir</Badge>}
                                     Gênero: {data.genre}
                                 </div>
                             </div>
@@ -86,8 +107,8 @@ const InfoSerie = ({match}) => {
                 </div>
             </header>
 
-            <div>
-                <button onClick={() => setMode('EDIT')} className="btn btn-success">Editar</button>
+            <div className='container'>
+                <button onClick={() => setMode('EDIT')} className='btn btn-success'>Editar</button>
             </div>
 
             {
@@ -95,7 +116,7 @@ const InfoSerie = ({match}) => {
 
             <div className='container'>
                 <h1>Info Série</h1>
-                <pre>{JSON.stringify(form)}</pre>
+                
                 <form>
                     <div className='form-group'>
                         <label htmlFor='name'>Nome</label>
@@ -108,16 +129,27 @@ const InfoSerie = ({match}) => {
                     </div>
 
                     <div className='form-group'>
-                        <label htmlFor='name'>Gêneros</label>
-                        <select className="form-control">
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                        <label htmlFor='name'>Gênero</label>
+                        <select className='form-control' onChange={onChangeGenre} value={genreId}>
+                            {genres.map(genre => <option key={genre.id} value={genre.id}>{genre.name}</option>) }
                         </select>
                     </div>
 
+                    <div className='form-check'>
+                        <input className='form-check-input' type='radio' checked={form.status === 'ASSISTIDO'} name='status' id='assistido' value='ASSISTIDO' onChange={seleciona('ASSISTIDO')} />
+                        <label className='form-check-label' htmlFor='assistido'>
+                            Assistido
+                        </label>
+                    </div>
+                    <div className='form-check'>
+                        <input className='form-check-input' type='radio' checked={form.status === 'PARA_ASSISTIR'} name='status' id='paraAssistir' value='PARA_ASSISTIR' onChange={seleciona('PARA_ASSISTIR')} />
+                        <label className='form-check-label' htmlFor='paraAssistir'>
+                            Para Assistir
+                        </label>
+                    </div>
+
                     <button type='button' onClick={save} className='btn btn-primary'>Salvar</button>
-                    <button onClick={() => setMode('INFO')} className="btn btn-danger">Cancelar</button>
+                    <button onClick={() => setMode('INFO')} className='btn btn-danger'>Cancelar</button>
                 </form>
 
             </div>
