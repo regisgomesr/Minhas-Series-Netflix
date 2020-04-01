@@ -31,7 +31,9 @@ Aplicação Front-end SPA (Sinple-Page Application) Séries Netflix - Consumindo
 
 0) Clone o repositório;<br>
 1) Baixe as dependências;<br>
-2) Execute o script START;<br>
+2) Execute os script START;<br>
+### `yarn start-server`<br>
+### `yarn start-react`<br>
 3) Acesse a aplicação em http://localhost:3000;<br>
 
 ## Licença
