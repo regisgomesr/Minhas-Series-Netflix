@@ -21,6 +21,8 @@ Minhas Séries Favoritas da Netflix
 
 ## ⚙️ Características
 
+ Aplicação simples para gerenciar suas séries Netflix favoritas para armazenar as que você assistiu e qual vai assistir e para guardar em qual episódio e temporada está.
+
  Aplicação Front-end SPA (Sinple-Page Application) Séries Netflix - Consumindo uma API, utilizando Bootstrap para estilização, axios e react-router-dom.
 
  Deploy Umbler: http://ms-regisdevreact-com.umbler.net/
