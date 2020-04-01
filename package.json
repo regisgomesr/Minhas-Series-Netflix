@@ -5,7 +5,7 @@
   "dependencies": {
     "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
-    "minhas-series-server": "https://github.com/tuliofaria/minhas-series-server",
+    "minhas-series-server": "https://github.com/regisgomesr/minhas-series-server",
     "npm-run-all": "^4.1.5",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
