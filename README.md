@@ -21,7 +21,9 @@ Minhas Séries Favoritas da Netflix
 
 ## ⚙️ Características
 
-Aplicação Front-end SPA (Sinple-Page Application) Séries Netflix - Consumindo uma API, utilizando Bootstrap para estilização, axios e react-router-dom.
+ Aplicação Front-end SPA (Sinple-Page Application) Séries Netflix - Consumindo uma API, utilizando Bootstrap para estilização, axios e react-router-dom.
+
+ Deploy Umbler: http://ms-regisdevreact-com.umbler.net/
 
 ## 🛠 Tecnologias
 
@@ -35,6 +37,8 @@ Aplicação Front-end SPA (Sinple-Page Application) Séries Netflix - Consumindo
 ### `yarn start-server`<br>
 ### `yarn start-react`<br>
 3) Acesse a aplicação em http://localhost:3000;<br>
+
+4) Deploy na Umbler http://ms-regisdevreact-com.umbler.net/;<br>
 
 ## Licença
 
