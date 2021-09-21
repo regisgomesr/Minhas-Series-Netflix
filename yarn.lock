@@ -6741,9 +6741,10 @@ mimic-fn@^2.0.0:
   resolved "https://registry.yarnpkg.com/mimic-fn/-/mimic-fn-2.1.0.tgz#7ed2c2ccccaf84d3ffcb7a69b57711fc2083401b"
   integrity sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg==
 
-"minhas-series-server@https://github.com/tuliofaria/minhas-series-server":
+"minhas-series-server@https://github.com/regisgomesr/minhas-series-server":
   version "1.0.0"
-  resolved "https://github.com/tuliofaria/minhas-series-server#774d53345a625842f6443a68a5dcbbad43910332"
+  uid "0ac31c68b8d489574b828c3b57dbfcda7b95200f"
+  resolved "https://github.com/regisgomesr/minhas-series-server#0ac31c68b8d489574b828c3b57dbfcda7b95200f"
   dependencies:
     axios "^0.19.0"
     body-parser "^1.19.0"
@@ -10189,9 +10190,9 @@ tmp@^0.0.33:
     os-tmpdir "~1.0.2"
 
 tmpl@1.0.x:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/tmpl/-/tmpl-1.0.4.tgz#23640dd7b42d00433911140820e5cf440e521dd1"
-  integrity sha1-I2QN17QtAEM5ERQIIOXPRA5SHdE=
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/tmpl/-/tmpl-1.0.5.tgz#8683e0b902bb9c20c4f726e3c0b69f36518c07cc"
+  integrity sha512-3f0uOEAQwIqGuWW2MVzYg8fV/QNnc/IpuJNG837rLuczAaLVHslWHZQj4IGiEl5Hs3kkbhwL9Ab7Hrsmuj+Smw==
 
 to-arraybuffer@^1.0.0:
   version "1.0.1"
